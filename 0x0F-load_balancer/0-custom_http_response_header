@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Automatizing the nginx configuration for my servers
-sudo apt-get -y update
-sudo apt-get -y install nginx
-sudo sed -i "15i \\\tadd_header X-Served-By 122394-web-01;" /etc/nginx/nginx.conf
-sudo service nginx restart
+# Configure new nginx server to have a custom header
+apt-get -y update
+apt-get install -y nginx
+sed -i '11i\add_header X-Served-By $HOSTNAME;' /etc/nginx/nginx.conf
+service nginx restart
